@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Afonso Biscaia</title>
+  <title>[Your Name]</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -15,10 +15,8 @@
       --text-secondary: #5a5a56;
       --text-muted: #9a9a94;
       --bg: #faf9f6;
-      --surface: #f2f0eb;
       --border: #e2e0d8;
       --accent: #2a4a8f;
-      --accent-light: #e8edf8;
     }
 
     html { scroll-behavior: smooth; }
@@ -32,476 +30,387 @@
     }
 
     /* ── Layout ── */
-    .container { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+    .container { max-width: 680px; margin: 0 auto; padding: 0 2rem; }
 
-    /* ── Nav ── */
-    nav {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(250,249,246,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      padding: 0.9rem 0;
-    }
-    nav .container {
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .nav-name {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.01em;
-      color: var(--text);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.82rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .nav-links a:hover { color: var(--accent); }
+    /* ── Header ── */
+    header { padding: 3.5rem 0 0; }
 
-    /* ── Hero ── */
-    #about {
-      padding: 5rem 0 4rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 3rem;
-      align-items: start;
-    }
-    .hero-eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.8rem;
-    }
     h1 {
       font-family: 'EB Garamond', serif;
-      font-size: 2.8rem;
+      font-size: 2.2rem;
       font-weight: 400;
-      line-height: 1.1;
       letter-spacing: -0.01em;
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.2rem;
     }
-    .affiliation {
-      font-size: 0.9rem;
+
+    .header-sub {
+      font-size: 0.88rem;
       color: var(--text-secondary);
-      margin-bottom: 1.6rem;
-      display: flex; flex-direction: column; gap: 0.25rem;
-    }
-    .affiliation span { display: flex; align-items: center; gap: 0.5rem; }
-    .affiliation svg { flex-shrink: 0; opacity: 0.5; }
-    .bio-text {
-      font-size: 0.96rem;
-      color: var(--text-secondary);
-      max-width: 520px;
       margin-bottom: 2rem;
-      line-height: 1.8;
     }
-    .avatar-wrap {
-      width: 120px; height: 120px;
+
+    /* ── Tabs ── */
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      padding: 0.6rem 1.1rem 0.55rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .tab-btn:first-child { padding-left: 0; }
+
+    .tab-btn:hover { color: var(--text); }
+
+    .tab-btn.active {
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
+
+    /* ── Tab panels ── */
+    .tab-panel { display: none; padding-bottom: 4rem; }
+    .tab-panel.active { display: block; }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 100px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .bio {
+      font-size: 0.97rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.8rem;
+    }
+
+    .bio strong { color: var(--text); font-weight: 500; }
+
+    .avatar {
+      width: 100px; height: 100px;
       border-radius: 50%;
-      background: var(--surface);
+      background: #e8e6e0;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-placeholder {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: #e8e6e0;
       border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       font-family: 'EB Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 1.5rem;
       color: var(--text-muted);
-      flex-shrink: 0;
-      overflow: hidden;
     }
 
-    /* ── Profile links ── */
-    .profile-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    /* Profile links */
+    .profile-links { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
     .profile-link {
-      display: inline-flex; align-items: center; gap: 0.4rem;
       font-size: 0.78rem;
-      letter-spacing: 0.03em;
-      padding: 0.35rem 0.85rem;
+      padding: 0.28rem 0.75rem;
       border: 1px solid var(--border);
       border-radius: 2rem;
       color: var(--text-secondary);
       text-decoration: none;
-      background: var(--bg);
-      transition: border-color 0.15s, color 0.15s, background 0.15s;
-    }
-    .profile-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-light);
-    }
-    .profile-link svg { width: 12px; height: 12px; opacity: 0.7; }
-
-    /* ── Sections ── */
-    section { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
-    section:last-child { border-bottom: none; }
-
-    .section-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
+      transition: border-color 0.15s, color 0.15s;
     }
 
-    /* ── CV ── */
-    .cv-block { margin-bottom: 2rem; }
-    .cv-block:last-child { margin-bottom: 0; }
-    .cv-year {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
-      margin-bottom: 0.2rem;
-    }
-    .cv-title {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--text);
-      line-height: 1.3;
-    }
-    .cv-sub {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      margin-top: 0.15rem;
-    }
-    .cv-group { margin-bottom: 2.5rem; }
-    .cv-group-title {
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.2rem;
-    }
-    .cv-link {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      font-size: 0.8rem;
-      color: var(--accent);
-      text-decoration: none;
-      margin-top: 0.35rem;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.15s;
-    }
-    .cv-link:hover { border-color: var(--accent); }
+    .profile-link:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ── Publications ── */
-    .pub-list { display: flex; flex-direction: column; gap: 1.6rem; }
-    .pub-item {
-      padding: 1.4rem 1.6rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--bg);
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-    .pub-item:hover {
-      border-color: #c8c5bc;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    }
-    .pub-meta {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
-      margin-bottom: 0.4rem;
-      display: flex; gap: 0.8rem; align-items: center;
-    }
-    .pub-badge {
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.15rem 0.5rem;
-      border-radius: 2rem;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-weight: 500;
-    }
+    /* ── Research / Publications ── */
+    .pub-list { display: flex; flex-direction: column; gap: 2rem; }
+
+    .pub-item { padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
+
     .pub-title {
       font-family: 'EB Garamond', serif;
       font-size: 1.08rem;
       line-height: 1.35;
       color: var(--text);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.3rem;
     }
+
     .pub-authors {
       font-size: 0.85rem;
       color: var(--text-secondary);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
     }
+
     .pub-venue {
       font-size: 0.82rem;
       color: var(--text-muted);
       font-style: italic;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.55rem;
     }
-    .pub-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+    .pub-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
     .pub-link {
       font-size: 0.78rem;
       color: var(--accent);
       text-decoration: none;
-      display: inline-flex; align-items: center; gap: 0.25rem;
       border-bottom: 1px solid transparent;
       transition: border-color 0.15s;
     }
+
     .pub-link:hover { border-color: var(--accent); }
 
-    /* ── Contact ── */
-    .contact-row {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      margin-bottom: 0.75rem;
+    .pub-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
     }
-    .contact-row svg { opacity: 0.45; flex-shrink: 0; }
-    .contact-row a { color: var(--accent); text-decoration: none; }
-    .contact-row a:hover { text-decoration: underline; }
+
+    /* ── CV ── */
+    .cv-section { margin-bottom: 2.5rem; }
+
+    .cv-section-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .cv-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 0.5rem 1.2rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.9rem;
+    }
+
+    .cv-row:last-child { margin-bottom: 0; }
+
+    .cv-year { color: var(--text-muted); padding-top: 0.05rem; }
+
+    .cv-detail { color: var(--text-secondary); }
+    .cv-detail strong { color: var(--text); font-weight: 500; }
+
+    .cv-download {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+      margin-top: 0.5rem;
+    }
+    .cv-download:hover { border-color: var(--accent); }
+
+    /* ── Contact ── */
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .contact-list li { font-size: 0.9rem; color: var(--text-secondary); }
+    .contact-list a { color: var(--accent); text-decoration: none; }
+    .contact-list a:hover { text-decoration: underline; }
 
     /* ── Footer ── */
     footer {
-      padding: 2rem 0;
-      text-align: center;
-      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      font-size: 0.76rem;
       color: var(--text-muted);
-      letter-spacing: 0.04em;
     }
 
-    @media (max-width: 600px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .avatar-wrap { width: 80px; height: 80px; font-size: 1.5rem; }
-      h1 { font-size: 2.1rem; }
-      .nav-links { gap: 1rem; }
+    @media (max-width: 520px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .avatar, .avatar-placeholder { width: 72px; height: 72px; }
+      h1 { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="container">
-    <a href="#about" class="nav-name">Afonso Biscaia</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#cv">CV</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+<div class="container">
 
-<!-- ── ABOUT ── -->
-<section id="about">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <p class="hero-eyebrow">Researcher</p>
-        <h1>Afonso Biscaia</h1>
-        <div class="affiliation">
-          <span>
-            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5L1 5.5V7h14V5.5L8 1.5zM3 7v5M6 7v5M10 7v5M13 7v5M1 12h14"/></svg>
-            [Instituto de Ciências Sociais - Universidade de Lisboa]
-          </span>
-          <span>
-            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4v4l2.5 2.5"/></svg>
-            PhD
-          </span>
+  <header>
+    <h1>[Your Name]</h1>
+    <p class="header-sub">PhD Candidate · [Department] · [University]</p>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab-btn active" role="tab" aria-selected="true"  data-tab="about">About</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" data-tab="research">Research</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" data-tab="cv">CV</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" data-tab="contact">Contact</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── ABOUT ── -->
+    <div class="tab-panel active" id="tab-about" role="tabpanel">
+      <div class="about-grid">
+        <div>
+          <p class="bio">
+            Hello! I am a PhD candidate in <strong>[Field]</strong> at <strong>[University]</strong>.
+            My research focuses on [brief description of your research interests — 2–3 sentences].
+            I am interested in [theme or question], with a particular focus on [specific angle or method].
+            I completed my [undergraduate/master's] degree at [Institution] in [Year].
+          </p>
+          <div class="profile-links">
+            <a href="https://scholar.google.com/citations?user=YOURID" target="_blank" rel="noopener" class="profile-link">Google Scholar</a>
+            <a href="https://www.scopus.com/authid/detail.uri?authorId=YOURID" target="_blank" rel="noopener" class="profile-link">Scopus</a>
+            <a href="https://www.webofscience.com/wos/author/record/YOURID" target="_blank" rel="noopener" class="profile-link">Web of Science</a>
+            <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener" class="profile-link">ORCID</a>
+            <a href="https://www.researchgate.net/profile/Your-Name" target="_blank" rel="noopener" class="profile-link">ResearchGate</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="profile-link">LinkedIn</a>
+          </div>
         </div>
-        <p class="bio-text">
-          I work in political science and political communication. I have published research on radical right-wing populism in Portugal in comparison with other countries. I am especially interested in the interaction between populist political communication and trust in political institutions and the news media. I mostly use qualitative methods. 
-        </p>
-        <div class="profile-links">
-          <a href="https://scholar.google.com/citations?user=lm9UO6YAAAAJ&hl" target="_blank" rel="noopener" class="profile-link">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M4 8h8M8 4v8"/></svg>
-            Google Scholar
-          </a>
-          <a href="https://www.scopus.com/authid/detail.uri?authorId=58538672100" target="_blank" rel="noopener" class="profile-link">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg>
-            Scopus
-          </a>
-          <a href="https://www.webofscience.com/wos/author/record/IXD-3251-2023" target="_blank" rel="noopener" class="profile-link">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5 6l3 4 3-4"/></svg>
-            Web of Science
-          </a>
-          <a href="https://orcid.org/0000-0001-9154-4350" target="_blank" rel="noopener" class="profile-link">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><circle cx="8" cy="4.5" r="0.8" fill="currentColor"/><path d="M8 6.5v5"/></svg>
-            ORCID
-          </a>
-          <a href="https://www.researchgate.net/profile/Afonso-Biscaia" target="_blank" rel="noopener" class="profile-link">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h12v12H2z"/><path d="M6 6h4M6 10h2"/></svg>
-            ResearchGate
-          </a>
-          <a href="https://www.linkedin.com/in/joseafonsobiscaia/" target="_blank" rel="noopener" class="profile-link">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="1.5" width="13" height="13" rx="2"/><path d="M5 7v4M5 5v.01M8 11V8.5c0-1 .5-1.5 1.5-1.5s1.5.5 1.5 1.5V11"/></svg>
-            LinkedIn
-          </a>
+        <!-- Replace the placeholder below with:
+             <img src="Afonso Biscaia.jpg" alt="[Your Name]" class="avatar" />  -->
+        <div class="avatar-placeholder">AB</div>
+      </div>
+    </div>
+
+    <!-- ── RESEARCH ── -->
+    <div class="tab-panel" id="tab-research" role="tabpanel">
+      <div class="pub-list">
+
+        <div class="pub-item">
+          <p class="pub-tag">Journal article · 2024</p>
+          <p class="pub-title">Your Most Recent Paper Title Goes Here: A Study of Something Important</p>
+          <p class="pub-authors"><strong>[Your Name]</strong>, Co-Author A, Co-Author B</p>
+          <p class="pub-venue">Journal Name, Vol. X, No. Y, pp. 000–000</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link" target="_blank">PDF</a>
+            <a href="https://doi.org/10.xxxx/xxxxx" class="pub-link" target="_blank">DOI</a>
+            <a href="#" class="pub-link" target="_blank">arXiv</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-tag">Conference paper · 2023</p>
+          <p class="pub-title">Another Paper Title: Insights from Empirical Work</p>
+          <p class="pub-authors"><strong>[Your Name]</strong>, Co-Author C</p>
+          <p class="pub-venue">Proceedings of [Conference Name] (CONF'23), [City]</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link" target="_blank">PDF</a>
+            <a href="https://doi.org/10.xxxx/xxxxx" class="pub-link" target="_blank">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-tag">Working paper · 2022</p>
+          <p class="pub-title">A Work in Progress: Early Findings on Your Research Topic</p>
+          <p class="pub-authors"><strong>[Your Name]</strong>, Co-Author D</p>
+          <p class="pub-venue">Under review at [Journal Name]</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link" target="_blank">PDF</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── CV ── -->
+    <div class="tab-panel" id="tab-cv" role="tabpanel">
+
+      <div class="cv-section">
+        <p class="cv-section-title">Education</p>
+        <div class="cv-row">
+          <span class="cv-year">2020–present</span>
+          <span class="cv-detail"><strong>PhD in [Field]</strong><br>[University], [City]<br>Supervisor: Prof. [Name]</span>
+        </div>
+        <div class="cv-row">
+          <span class="cv-year">2018</span>
+          <span class="cv-detail"><strong>MSc in [Field]</strong>, [University]</span>
+        </div>
+        <div class="cv-row">
+          <span class="cv-year">2016</span>
+          <span class="cv-detail"><strong>BSc in [Field]</strong>, [University]</span>
         </div>
       </div>
-     <div class="avatar-wrap">
-  <img src="Afonso Biscaia.jpg" alt="Afonso Biscaia" style="width:100%; height:100%; object-fit:cover;" />
+
+      <div class="cv-section">
+        <p class="cv-section-title">Publications</p>
+        <div class="cv-row">
+          <span class="cv-year">2024</span>
+          <span class="cv-detail">[Your Name], Co-Author A. "Paper Title." <em>Journal Name</em>, Vol. X.</span>
+        </div>
+        <div class="cv-row">
+          <span class="cv-year">2023</span>
+          <span class="cv-detail">[Your Name], Co-Author B. "Paper Title." <em>Conference Proceedings</em>.</span>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <p class="cv-section-title">Awards &amp; Grants</p>
+        <div class="cv-row">
+          <span class="cv-year">2023</span>
+          <span class="cv-detail"><strong>Best Paper Award</strong>, [Conference Name]</span>
+        </div>
+        <div class="cv-row">
+          <span class="cv-year">2020</span>
+          <span class="cv-detail"><strong>PhD Fellowship</strong>, [Funding Body]</span>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <p class="cv-section-title">Teaching</p>
+        <div class="cv-row">
+          <span class="cv-year">2023</span>
+          <span class="cv-detail">Teaching Assistant — [Course Name], [University]</span>
+        </div>
+      </div>
+
+      <a href="cv.pdf" class="cv-download" target="_blank">↓ Download full CV (PDF)</a>
+
+    </div>
+
+    <!-- ── CONTACT ── -->
+    <div class="tab-panel" id="tab-contact" role="tabpanel">
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:your.name@university.edu">your.name@university.edu</a></li>
+        <li>[Office / Room], [Building], [Campus Address]</li>
+        <li>Office hours: [Day], [Time], or by appointment</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer>© 2025 [Your Name]</footer>
+
 </div>
-    </div>
-  </div>
-</section>
 
-<!-- ── CV ── -->
-<section id="cv">
-  <div class="container">
-    <p class="section-label">Curriculum Vitae</p>
+<script>
+  const btns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
 
-    <div class="cv-group">
-      <p class="cv-group-title">Education</p>
-      <div class="cv-block">
-        <p class="cv-year">2020 – Present</p>
-        <p class="cv-title">PhD in [Field]</p>
-        <p class="cv-sub">[University Name], [City, Country]</p>
-        <p class="cv-sub">Thesis: "Your thesis title here"</p>
-        <p class="cv-sub">Supervisor: Prof. [Name]</p>
-      </div>
-      <div class="cv-block">
-        <p class="cv-year">2018 – 2020</p>
-        <p class="cv-title">MSc in [Field]</p>
-        <p class="cv-sub">[University Name], [City, Country]</p>
-      </div>
-      <div class="cv-block">
-        <p class="cv-year">2014 – 2018</p>
-        <p class="cv-title">BSc in [Field]</p>
-        <p class="cv-sub">[University Name], [City, Country]</p>
-      </div>
-    </div>
-
-    <div class="cv-group">
-      <p class="cv-group-title">Research Experience</p>
-      <div class="cv-block">
-        <p class="cv-year">2020 – Present</p>
-        <p class="cv-title">PhD Researcher</p>
-        <p class="cv-sub">[Lab / Group Name], [Institution]</p>
-      </div>
-      <div class="cv-block">
-        <p class="cv-year">Summer 2019</p>
-        <p class="cv-title">Research Intern</p>
-        <p class="cv-sub">[Institute / Company], [City]</p>
-      </div>
-    </div>
-
-    <div class="cv-group">
-      <p class="cv-group-title">Awards &amp; Grants</p>
-      <div class="cv-block">
-        <p class="cv-year">2023</p>
-        <p class="cv-title">Best Paper Award</p>
-        <p class="cv-sub">[Conference Name]</p>
-      </div>
-      <div class="cv-block">
-        <p class="cv-year">2020</p>
-        <p class="cv-title">PhD Fellowship</p>
-        <p class="cv-sub">[Funding Body / Grant Name]</p>
-      </div>
-    </div>
-
-    <a href="cv.pdf" class="cv-link" target="_blank">
-      <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3V2z"/><path d="M10 2v3h3"/><path d="M5 9h6M5 12h4"/></svg>
-      Download full CV (PDF)
-    </a>
-  </div>
-</section>
-
-<!-- ── PUBLICATIONS ── -->
-<section id="publications">
-  <div class="container">
-    <p class="section-label">Publications</p>
-    <div class="pub-list">
-
-      <div class="pub-item">
-        <div class="pub-meta">
-          <span>2024</span>
-          <span class="pub-badge">Journal article</span>
-        </div>
-        <p class="pub-title">Your Most Recent Paper Title Goes Here: A Study of Something Important</p>
-        <p class="pub-authors"><strong>[Your Name]</strong>, Co-Author A, Co-Author B</p>
-        <p class="pub-venue">Journal Name, Vol. X, No. Y, pp. 000–000</p>
-        <div class="pub-links">
-          <a href="#" class="pub-link" target="_blank">
-            <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1v10M4 7l4 4 4-4"/><path d="M2 13h12"/></svg>
-            PDF
-          </a>
-          <a href="https://doi.org/10.xxxx/xxxxx" class="pub-link" target="_blank">
-            <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8a4 4 0 1 0 4 0"/><path d="M10 8a4 4 0 1 0-4 0"/></svg>
-            DOI
-          </a>
-          <a href="#" class="pub-link" target="_blank">
-            <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg>
-            arXiv
-          </a>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <div class="pub-meta">
-          <span>2023</span>
-          <span class="pub-badge">Conference paper</span>
-        </div>
-        <p class="pub-title">Another Paper Title: Insights from Experimental Work</p>
-        <p class="pub-authors"><strong>[Your Name]</strong>, Co-Author C</p>
-        <p class="pub-venue">Proceedings of [Conference Name] (CONF'23), [City], [Country]</p>
-        <div class="pub-links">
-          <a href="#" class="pub-link" target="_blank">
-            <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1v10M4 7l4 4 4-4"/><path d="M2 13h12"/></svg>
-            PDF
-          </a>
-          <a href="https://doi.org/10.xxxx/xxxxx" class="pub-link" target="_blank">
-            <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8a4 4 0 1 0 4 0"/><path d="M10 8a4 4 0 1 0-4 0"/></svg>
-            DOI
-          </a>
-        </div>
-      </div>
-
-      <div class="pub-item">
-        <div class="pub-meta">
-          <span>2022</span>
-          <span class="pub-badge">Preprint</span>
-        </div>
-        <p class="pub-title">A Work in Progress: Early Findings on Your Research Topic</p>
-        <p class="pub-authors"><strong>[Your Name]</strong>, Co-Author D, Co-Author E</p>
-        <p class="pub-venue">arXiv preprint arXiv:2200.00000</p>
-        <div class="pub-links">
-          <a href="#" class="pub-link" target="_blank">
-            <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg>
-            arXiv
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="container">
-    <p class="section-label">Contact</p>
-    <div class="contact-row">
-      <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5"/><path d="M1.5 5l6.5 4.5L14.5 5"/></svg>
-      <a href="mailto:your.name@university.edu">your.name@university.edu</a>
-    </div>
-    <div class="contact-row">
-      <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5a4.5 4.5 0 0 1 0 9c-2.5 0-4.5-2-4.5-4.5S5.5 1.5 8 1.5z"/><path d="M8 10.5v4M5.5 12h5"/></svg>
-      [Office / Room Number], [Building], [Campus Address]
-    </div>
-    <div class="contact-row">
-      <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4v4l2 2"/></svg>
-      Office hours: [Day] [Time] or by appointment
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    © 2025 [Your Name] · Built with GitHub Pages
-  </div>
-</footer>
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
 
 </body>
 </html>
